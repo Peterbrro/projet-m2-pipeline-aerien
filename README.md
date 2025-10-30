@@ -9,9 +9,9 @@
 
 ##  Objectif du projet
 
-Ce projet a pour but de construire un **pipeline ETL distribué** permettant de collecter, traiter et visualiser en quasi temps réel des **données aériennes** issues d’API publiques.
+Ce projet a pour but de construire un **pipeline de données distribuées** permettant de collecter, traiter et visualiser en quasi temps réel des **données aériennes** issues d’API publiques.
 
-Nous avons mis en œuvre une architecture complète, conteneurisée avec Docker, intégrant plusieurs outils Big Data afin d’assurer un flux continu depuis la source de données jusqu’à la visualisation finale.
+Nous avons mis en œuvre une architecture, conteneurisée avec Docker, intégrant plusieurs outils Big Data afin d’assurer un flux depuis la source de données jusqu’à la visualisation finale.
 
 ---
 
@@ -19,14 +19,11 @@ Nous avons mis en œuvre une architecture complète, conteneurisée avec Docker,
 
 **Flux de données :**
 
-
-Chaque composant a un rôle bien défini :
 - **NiFi** → ingestion et transformation des données API  
 - **Kafka** → gestion du flux de messages distribué  
-- **Spark** → traitement et agrégation en streaming  
+- **Spark** → traitement et agrégation des données  
 - **PostgreSQL** → stockage structuré des résultats  
-- **Power BI** → visualisation des indicateurs en temps quasi réel  
-
+- **Power BI** → visualisation des indicateurs
 *(Un schéma d’architecture est fourni dans le dossier `/schema`.)*
 
 ---
@@ -50,26 +47,26 @@ Tous les services sont déployés et orchestrés via **Docker Compose**.
 ### 1 Ingestion — *Apache NiFi*
 - Appel des API
 - Extraction et nettoyage des champs utiles (timestamp, icao24, lat, lon, altitude, vitesse, pays…)
-- Publication des données JSON dans le topic Kafka `flights_positions`
+- Publication des données JSON dans le topic Kafka `quickstart`
 
 ### 2️ Streaming — *Apache Kafka*
 - Centralisation du flux d’événements NiFi
-- Communication fiable et distribuée entre NiFi et Spark
+- Communication distribuée entre NiFi et Spark
 
 ### 3️ Traitement — *Apache Spark*
 - Lecture continue depuis Kafka (Structured Streaming)
 - Nettoyage et transformation des données
-- Calculs d’agrégations (ex : nombre de vols actifs, vitesse moyenne par pays, altitudes incohérentes)
+- Calculs d’agrégations 
 - Écriture des résultats dans PostgreSQL
 
 ### 4️ Stockage — *PostgreSQL*
 ```sql
-CREATE TABLE flights_agg (
-    timestamp TIMESTAMP,
-    icao24 VARCHAR,
+CREATE TABLE aeroport ( airport_id,name,type,country,longitude,latitude,elevation_value
+    airport_id VARCHAR,
+    name VARCHAR,
+    type FLOAT,
     country VARCHAR,
-    altitude FLOAT,
-    speed FLOAT,
-    lat FLOAT,
-    lon FLOAT
+    longitude FLOAT,
+    latitude FLOAT,
+    elevation_value FLOAT
 );
