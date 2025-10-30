@@ -60,7 +60,7 @@ Tous les services sont déployés et orchestrés via **Docker Compose**.
 - Écriture des résultats dans PostgreSQL
 
 ### 4️ Stockage — *PostgreSQL*
-```sql
+
 CREATE TABLE aeroport ( airport_id,name,type,country,longitude,latitude,elevation_value
     airport_id VARCHAR,
     name VARCHAR,
@@ -70,3 +70,25 @@ CREATE TABLE aeroport ( airport_id,name,type,country,longitude,latitude,elevatio
     latitude FLOAT,
     elevation_value FLOAT
 );
+
+### Visualisation — *Power BI*
+- Connexion à PostgreSQL
+- Création de rapports et dashboards interactifs
+- Exploration des données agrégées
+
+## Structure du projet
+
+ProjetM2/
+├─ docker/
+│   └─ docker-compose.yml        # Orchestration des services
+├─ nifi/
+│   └─ nifi_template.xml         # Template NiFi pour ingestion API
+├─ Flux Spark/
+│   ├─ kafka_to_csv.py           # Script pour récupérer les données Kafka en CSV
+│   └─ csv_to_postgres.py        # Script pour insérer les CSV dans PostgreSQL
+├─ Données/
+│   ├─ Export_données.csv        # Exemple de données extraites
+│   └─ Correspondance_Pays.csv   # Fichier de correspondance pays
+├─ Visualisation/
+│   └─ Dashboard.pbix            # Fichier Power BI
+└─ README.md                     # Ce fichier
