@@ -1,8 +1,8 @@
 #  Projet M2 Data — Pipeline ETL Distribué (Données Aériennes)
 
 ##  Auteurs
-- **Peter**  
-- **Matéo**  
+- **Peter Broussaud**  
+- **Matéo Guillard**  
    *Master Big Data et Intelligence Artificielle*
 
 ---
