@@ -92,3 +92,4 @@ ProjetM2/
 ├─ Visualisation/
 │   └─ Dashboard.pbix            # Fichier Power BI
 └─ README.md                     # Ce fichier
+
