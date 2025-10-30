@@ -63,3 +63,4 @@ df.write \
     .save()
 
 print("✅ CSV écrit dans Postgres dans la table 'aeroports' avec succès !")
+
