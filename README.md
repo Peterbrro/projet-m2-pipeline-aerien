@@ -17,6 +17,9 @@ Nous avons mis en œuvre une architecture, conteneurisée avec Docker, intégran
 
 ##  Architecture globale
 
+<img width="400" height="300" alt="image" src="https://github.com/user-attachments/assets/aa4b64d6-221c-4dab-8e28-36a857a8eae6" />
+
+
 **Flux de données :**
 
 - **NiFi** → ingestion et transformation des données API  
